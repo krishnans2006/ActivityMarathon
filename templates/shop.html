@@ -18,7 +18,7 @@
 		<!-- Title on Navbar -->
 		<a class="navbar-brand" href="/" style="color: #d0a92c"><b>The Activity Marathon</b></a
       >
-      
+
       <!-- Toggle Navigation -->
       <button
         class="navbar-toggler"
@@ -37,12 +37,14 @@
         <!-- Left-aligned Nav Items -->
         <ul class="navbar-nav mr-auto">
           <!-- Home -->
-          <li class="nav-item active">
+          <li class="nav-item">
             <a
               class="nav-link"
-              style="-webkit-transition: color 0.2s ease-out; -moz-transition: color 0.2s ease-out; -o-transition: color 0.2s ease-out; -ms-transition: color 0.2s ease-out; transition: color 0.2s ease-out; color: #d0a92c"
+              style="-webkit-transition: color 0.2s ease-out; -moz-transition: color 0.2s ease-out; -o-transition: color 0.2s ease-out; -ms-transition: color 0.2s ease-out; transition: color 0.2s ease-out; color: #a78824"
+              onmouseover="this.style.color='#d0a92c'"
+              onmouseout="this.style.color='#a78824'"
               href="/"
-              ><b>Home <span class="sr-only">(current)</span></b></a
+              ><b>Home</b></a
             >
           </li>
 
@@ -58,6 +60,7 @@
               ><b>Leaderboard</b></a
             >
           </li>
+          
 
           <!-- Upload -->
           <li class="nav-item">
@@ -72,14 +75,12 @@
           </li>
 
           <!-- Shop -->
-          <li class="nav-item">
+          <li class="nav-item active">
             <a
               class="nav-link"
-              style="-webkit-transition: color 0.2s ease-out; -moz-transition: color 0.2s ease-out; -o-transition: color 0.2s ease-out; -ms-transition: color 0.2s ease-out; transition: color 0.2s ease-out; color: #a78824"
-              onmouseover="this.style.color='#d0a92c'"
-              onmouseout="this.style.color='#a78824'"
+              style="-webkit-transition: color 0.2s ease-out; -moz-transition: color 0.2s ease-out; -o-transition: color 0.2s ease-out; -ms-transition: color 0.2s ease-out; transition: color 0.2s ease-out; color: #d0a92c"
               href="/shop"
-              ><b>Shop</b></a
+              ><b>Shop <span class="sr-only">(current)</span></b></a
             >
           </li>
 
@@ -244,89 +245,53 @@
         <h1
           style="color: #a78824; background-color: #343a40; padding: 6px 15px 12px 15px; border: 2px solid white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
         >
-          The Activity Marathon
+          Shop - The Activity Marathon
         </h1>
       </center>
     </div>
 
-    <!-- Description -->
+    <!-- Table -->
     <center>
       <div
         style="background-color: #343a40; border: 2px solid white; padding: 10px 5px 0px 5px; width: 60%; line-height: 40px;"
       >
-        {% if session.get("logged_in") %}
-        <p style="color: #a78824; font-size: 20px">
-          Due to Covid-19, average physical activity has reached an all-time
-          low.<br />
-          We hope that this website will help make working out more fun and
-          engaging by allowing users to compete for rewards.<br />You are logged
-          in, so you can check out the
-          <a
-            href="/leaderboard"
-            style="-webkit-transition: color 0.2s ease-out; -moz-transition: color 0.2s ease-out; -o-transition: color 0.2s ease-out; -ms-transition: color 0.2s ease-out; transition: color 0.2s ease-out; color: #a78824;"
-            onmouseover="this.style.color='#d0a92c'; this.style.textDecoration = 'none'"
-            onmouseout="this.style.color='#a78824'; this.style.textDecoration = 'none'"
-            ><b>Leaderboard</b></a
-          >,
-          <a
-            href="/upload"
-            style="-webkit-transition: color 0.2s ease-out; -moz-transition: color 0.2s ease-out; -o-transition: color 0.2s ease-out; -ms-transition: color 0.2s ease-out; transition: color 0.2s ease-out; color: #a78824;"
-            onmouseover="this.style.color='#d0a92c'; this.style.textDecoration = 'none'"
-            onmouseout="this.style.color='#a78824'; this.style.textDecoration = 'none'"
-            ><b>Upload</b></a
+        <center><p style="color: #a78824; margin: 5px 5px 0px 5px;">Leaderboard</p></center>
+        <center>
+          <table
+            style="color: #a78824; border: 1px solid #a78824; border-collapse: collapse; padding: 5px; margin: 0px 5px 10px 5px; width: 90%;"
+            border="1"
           >
-          your daily video, or view the
-          <a
-            href="/shop"
-            style="-webkit-transition: color 0.2s ease-out; -moz-transition: color 0.2s ease-out; -o-transition: color 0.2s ease-out; -ms-transition: color 0.2s ease-out; transition: color 0.2s ease-out; color: #a78824;"
-            onmouseover="this.style.color='#d0a92c'; this.style.textDecoration = 'none'"
-            onmouseout="this.style.color='#a78824'; this.style.textDecoration = 'none'"
-            ><b>Shop</b></a
-          >.<br />Good Luck and Have Fun!
-        </p>
-        {% else %}
-        <p style="color: #a78824; font-size: 20px">
-          Due to Covid-19, average physical activity has reached an all-time
-          low.<br />
-          We hope that this website will help make working out more fun and
-          engaging by allowing users to compete for rewards.<br />You will need
-          to
-          <a
-            href="/login"
-            style="-webkit-transition: color 0.2s ease-out; -moz-transition: color 0.2s ease-out; -o-transition: color 0.2s ease-out; -ms-transition: color 0.2s ease-out; transition: color 0.2s ease-out; color: #a78824;"
-            onmouseover="this.style.color='#d0a92c'; this.style.textDecoration = 'none'"
-            onmouseout="this.style.color='#a78824'; this.style.textDecoration = 'none'"
-            ><b>Log In</b></a
-          >
-          or
-          <a
-            href="/register"
-            class="btn btn-warning"
-            style="background-color: #a78824; border-color: #a78824;"
-            onmouseover="this.style.backgroundColor='#d0a92c'; this.style.borderColor='#d0a92c'"
-            onmouseout="this.style.backgroundColor='#a78824'; this.style.borderColor='#a78824'"
-            ><b>Sign Up</b></a
-          >
-          to access the Leaderboard, Upload, or Shop.<br />Good Luck and Have
-          Fun!
-        </p>
-        {% endif %}
-      </div>
-      <div
-        style="background-color: #343a40; border: 2px solid white; padding: 10px 5px 0px 5px; width: 46%; line-height: 40px; float: left; margin: 5% 2% 2% 2%;"
-      >
-        <p style="color: #a78824; font-size: 20px">
-          Whether you have been subject to the Quarantine 15, just gained a
-          little extra weight, build muscle or just want to stay healthy, this
-          is the app for you!
-        </p>
-      </div>
-      <div
-        style="background-color: #343a40; border: 2px solid white; padding: 10px 5px 0px 5px; width: 46%; line-height: 40px; float: right; margin: 5% 2% 2% 2%;"
-      >
-        <p style="color: #a78824; font-size: 20px">
-          This is some wonderful text! Imagine not having this on the website!!!
-        </p>
+            <tr>
+              <th style="padding: 2px 8px 2px 12px;">Item</th>
+              <th style="padding: 2px 8px 2px 12px;">Points</th>
+              <th style="padding: 2px 8px 2px 12px;">Buy</th>
+            </tr>
+            <tr>
+              <td style="padding: 2px 8px 2px 12px;">$5 Starbucks Gift card</td>
+              <td style="padding: 2px 8px 2px 12px;">5000<i
+                  class="fab fa-bitcoin"
+                  style="color: #a78824"
+                ></i></td>
+              <td style="padding: 2px 8px 2px 12px;">Not Enough Money!</td>
+            </tr>
+            <tr>
+              <td style="padding: 2px 8px 2px 12px;">$5 Chipotle Gift card</td>
+              <td style="padding: 2px 8px 2px 12px;">5000<i
+                  class="fab fa-bitcoin"
+                  style="color: #a78824"
+                ></i></td>
+              <td style="padding: 2px 8px 2px 12px;">Not Enough Money!</td>
+            </tr>
+            <tr>
+              <td style="padding: 2px 8px 2px 12px;">5 Free Skip Days</td>
+              <td style="padding: 2px 8px 2px 12px;">1000<i
+                  class="fab fa-bitcoin"
+                  style="color: #a78824"
+                ></i></td>
+              <td style="padding: 2px 8px 2px 12px;">Not Enough Money!</td>
+            </tr>
+          </table>
+        </center>
       </div>
     </center>
 

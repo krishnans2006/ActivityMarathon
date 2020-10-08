@@ -1,29 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <!-- Head -->
-  <head>
-    <title>The Activity Marathon</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://kit.fontawesome.com/4531fda782.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
+<!-- Head -->
 
-  <!-- Body -->
-  <body
-    style="background-image: url('https://cdn.glitch.com/76d26756-ff23-4183-a2b9-f2783dc807ac%2Fsports.png?v=1601490606374'); background-size: 500px;"
-  >
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-      <!-- Title on Navbar -->
-      <a class="navbar-brand" href="/" style="color: #d0a92c"
-        ><b>The Activity Marathon</b></a
+<head>
+	<title>The Activity Marathon</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	 crossorigin="anonymous" />
+	<script src="https://kit.fontawesome.com/4531fda782.js" crossorigin="anonymous">
+	</script>
+</head>
+
+<!-- Body -->
+
+<body style="background-image: url('https://cdn.glitch.com/76d26756-ff23-4183-a2b9-f2783dc807ac%2Fsports.png?v=1601490606374'); background-size: 500px;">
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+		<!-- Title on Navbar -->
+		<a class="navbar-brand" href="/" style="color: #d0a92c"><b>The Activity Marathon</b></a
       >
 
       <!-- Toggle Navigation -->
@@ -133,8 +126,8 @@
               onmouseout="this.style.color='#a78824'"
             >
               <b
-                >Logged in as {{session.get("first_name")}}
-                {{session.get("last_name")}}</b
+                >Logged in as {{session.get("fname")}}
+                {{session.get("lname")}}</b
               >
             </a>
 
@@ -252,7 +245,7 @@
         <h1
           style="color: #a78824; background-color: #343a40; padding: 6px 15px 12px 15px; border: 2px solid white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
         >
-          The Activity Marathon
+          Leaderboard - The Activity Marathon
         </h1>
       </center>
     </div>
@@ -271,13 +264,17 @@
             {% if leaderboard %}
             <tr>
               <th style="padding: 2px 8px 2px 12px;">Name</th>
+              <th style="padding: 2px 8px 2px 12px;">Email</th>
               <th style="padding: 2px 8px 2px 12px;">Points</th>
             </tr>
             {% endif %} {% for person in leaderboard %}
             <tr>
-              <td style="padding: 2px 8px 2px 12px;">{{person[0]}} {{person[1]}}</td>
+              <td style="padding: 2px 8px 2px 12px;">{{person["fname"]}} {{person["lname"]}}</td>
               <td style="padding: 2px 8px 2px 12px;">
-                {{person[4]}}  <i
+                  {{person["email"]}}
+              </td>
+              <td style="padding: 2px 8px 2px 12px;">
+                {{person["pts"]}}  <i
                   class="fab fa-bitcoin"
                   style="color: #a78824"
                 ></i>

@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <!-- Head -->
-  <head>
-    <title>Register - The Activity Marathon</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous"
-    />
-    <script src="https://kit.fontawesome.com/4531fda782.js" crossorigin="anonymous"></script>
-  </head>
+<!-- Head -->
 
-  <!-- Body -->
-  <body
-    style="background-image: url('https://cdn.glitch.com/76d26756-ff23-4183-a2b9-f2783dc807ac%2Fsports.png?v=1601490606374'); background-size: 500px;"
-  >
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-      <!-- Title on Navbar -->
-      <a class="navbar-brand" href="/" style="color: #d0a92c"
-        ><b>The Activity Marathon</b></a
+<head>
+	<title>Register - The Activity Marathon</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	 crossorigin="anonymous" />
+	<script src="https://kit.fontawesome.com/4531fda782.js" crossorigin="anonymous">
+	</script>
+</head>
+
+<!-- Body -->
+
+<body style="background-image: url('https://cdn.glitch.com/76d26756-ff23-4183-a2b9-f2783dc807ac%2Fsports.png?v=1601490606374'); background-size: 500px;">
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+		<!-- Title on Navbar -->
+		<a class="navbar-brand" href="/" style="color: #d0a92c"><b>The Activity Marathon</b></a
       >
 
       <!-- Toggle Navigation -->
@@ -134,8 +130,8 @@
               onmouseover="this.style.color='#d0a92c'"
               onmouseout="this.style.color='#a78824'"
             >
-              <b>Logged in as {{session.get("first_name")}}
-              {{session.get("last_name")}}</b>
+              <b>Logged in as {{session.get("fname")}}
+              {{session.get("lname")}}</b>
             </a>
 
             <!-- Dropdown Items -->
