@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+  <!-- Head -->
+  <head>
+    <title>The Activity Marathon</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <script src="https://kit.fontawesome.com/4531fda782.js" crossorigin="anonymous"></script>
+  </head>
+
+  <!-- Body -->
+  <body
+    style="background-image: url('https://cdn.glitch.com/76d26756-ff23-4183-a2b9-f2783dc807ac%2Fsports.png?v=1601490606374'); background-size: 500px;"
+  >
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+      <!-- Title on Navbar -->
+      <a class="navbar-brand" href="/" style="color: #d0a92c"
+        ><b>The Activity Marathon</b></a
+      >
+      
+      <!-- Toggle Navigation -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Nav Items -->
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <!-- Left-aligned Nav Items -->
+        <ul class="navbar-nav mr-auto">
+          <!-- Home -->
+          <li class="nav-item active">
+            <a
+              class="nav-link"
+              style="-webkit-transition: color 0.2s ease-out; -moz-transition: color 0.2s ease-out; -o-transition: color 0.2s ease-out; -ms-transition: color 0.2s ease-out; transition: color 0.2s ease-out; color: #d0a92c"
+              href="/"
+              ><b>Home <span class="sr-only">(current)</span></b></a
+            >
+          </li>
+
+          {% if session.get("logged_in") %}
+          <!-- Leaderboard -->
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              style="-webkit-transition: color 0.2s ease-out; -moz-transition: color 0.2s ease-out; -o-transition: color 0.2s ease-out; -ms-transition: color 0.2s ease-out; transition: color 0.2s ease-out; color: #a78824"
+              onmouseover="this.style.color='#d0a92c'"
+              onmouseout="this.style.color='#a78824'"
+              href="/leaderboard"
+              ><b>Leaderboard</b></a
+            >
+          </li>
+
+          <!-- Upload -->
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              style="-webkit-transition: color 0.2s ease-out; -moz-transition: color 0.2s ease-out; -o-transition: color 0.2s ease-out; -ms-transition: color 0.2s ease-out; transition: color 0.2s ease-out; color: #a78824"
+              onmouseover="this.style.color='#d0a92c'"
+              onmouseout="this.style.color='#a78824'"
+              href="/upload"
+              ><b>Upload</b></a
+            >
+          </li>
+
+          <!-- Shop -->
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              style="-webkit-transition: color 0.2s ease-out; -moz-transition: color 0.2s ease-out; -o-transition: color 0.2s ease-out; -ms-transition: color 0.2s ease-out; transition: color 0.2s ease-out; color: #a78824"
+              onmouseover="this.style.color='#d0a92c'"
+              onmouseout="this.style.color='#a78824'"
+              href="/shop"
+              ><b>Shop</b></a
+            >
+          </li>
+
+          {% else %}
+          <!-- Disabled Leaderboard -->
+          <li class="nav-item">
+            <a class="nav-link" style="color: #8d721e; cursor: not-allowed;"
+              ><b>Leaderboard</b></a
+            >
+          </li>
+
+          <!-- Disabled Upload -->
+          <li class="nav-item">
+            <a class="nav-link" style="color: #8d721e; cursor: not-allowed;"
+              ><b>Upload</b></a
+            >
+          </li>
+
+          <!-- Disabled Shop -->
+          <li class="nav-item">
+            <a class="nav-link" style="color: #8d721e; cursor: not-allowed;"
+              ><b>Shop</b></a
+            >
+          </li>
+          {% endif %}
+        </ul>
+
+        <!-- Right-aligned Nav Items -->
+        <ul class="navbar-nav">
+          {% if session.get("logged_in") %}
+          <!-- My account -->
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle px-3"
+              href="/"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              style="-webkit-transition: color 0.2s ease-out; -moz-transition: color 0.2s ease-out; -o-transition: color 0.2s ease-out; -ms-transition: color 0.2s ease-out; transition: color 0.2s ease-out; color: #a78824; "
+              onmouseover="this.style.color='#d0a92c'"
+              onmouseout="this.style.color='#a78824'"
+            >
+              <b
+                >Logged in as {{session.get("first_name")}}
+                {{session.get("last_name")}}</b
+              >
+            </a>
+
+            <!-- Dropdown Items -->
+            <div
+              class="dropdown-menu"
+              aria-labelledby="navbarDropdownMenuLink"
+              style="background-color: #343a40"
+            >
+              <a
+                class="dropdown-item"
+                href="/myaccount/points"
+                style="-webkit-transition: color 0.2s ease-out; -moz-transition: color 0.2s ease-out; -o-transition: color 0.2s ease-out; -ms-transition: color 0.2s ease-out; transition: color 0.2s ease-out; color: #a78824"
+                onmouseover="this.style.color='#d0a92c'; this.style.backgroundColor='#343a40'; document.getElementById('navbarDropdownMenuLink').style.color='#d0a92c';"
+                onmouseout="this.style.color='#a78824'; this.style.backgroundColor='#343a40'; document.getElementById('navbarDropdownMenuLink').style.color='#a78824';"
+                ><b>Points Earned</b></a
+              >
+              <a
+                class="dropdown-item"
+                href="/myaccount/marathons"
+                style="-webkit-transition: color 0.2s ease-out; -moz-transition: color 0.2s ease-out; -o-transition: color 0.2s ease-out; -ms-transition: color 0.2s ease-out; transition: color 0.2s ease-out; color: #a78824"
+                onmouseover="this.style.color='#d0a92c'; this.style.backgroundColor='#343a40'; document.getElementById('navbarDropdownMenuLink').style.color='#d0a92c';"
+                onmouseout="this.style.color='#a78824'; this.style.backgroundColor='#343a40'; document.getElementById('navbarDropdownMenuLink').style.color='#a78824';"
+                ><b>Marathon History</b></a
+              >
+              <a
+                class="dropdown-item"
+                href="/myaccount/redeemed"
+                style="-webkit-transition: color 0.2s ease-out; -moz-transition: color 0.2s ease-out; -o-transition: color 0.2s ease-out; -ms-transition: color 0.2s ease-out; transition: color 0.2s ease-out; color: #a78824"
+                onmouseover="this.style.color='#d0a92c'; this.style.backgroundColor='#343a40'; document.getElementById('navbarDropdownMenuLink').style.color='#d0a92c';"
+                onmouseout="this.style.color='#a78824'; this.style.backgroundColor='#343a40'; document.getElementById('navbarDropdownMenuLink').style.color='#a78824';"
+                ><b>Items Redeemed</b></a
+              >
+            </div>
+          </li>
+
+          <!-- Log Out -->
+          <li>
+            <div class="btn-nav px-1">
+              <a
+                class="btn btn-warning navbar-btn"
+                href="/logout"
+                style="background-color: #a78824; border-color: #a78824;"
+                onmouseover="this.style.backgroundColor='#d0a92c'; this.style.borderColor='#d0a92c'"
+                onmouseout="this.style.backgroundColor='#a78824'; this.style.borderColor='#a78824'"
+                ><b>Log Out</b></a
+              >
+            </div>
+          </li>
+
+          {% else %}
+          <!-- Log In -->
+          <li>
+            <div class="btn-nav px-1">
+              <a
+                class="nav-link"
+                href="/login"
+                style="-webkit-transition: color 0.2s ease-out; -moz-transition: color 0.2s ease-out; -o-transition: color 0.2s ease-out; -ms-transition: color 0.2s ease-out; transition: color 0.2s ease-out; color: #a78824;"
+                onmouseover="this.style.color='#d0a92c'"
+                onmouseout="this.style.color='#a78824'"
+                ><b>Log In</b></a
+              >
+            </div>
+          </li>
+
+          <!-- Register -->
+          <li>
+            <div class="btn-nav px-1">
+              <a
+                class="btn btn-warning navbar-btn"
+                href="/register"
+                style="background-color: #a78824; border-color: #a78824;"
+                onmouseover="this.style.backgroundColor='#d0a92c'; this.style.borderColor='#d0a92c'"
+                onmouseout="this.style.backgroundColor='#a78824'; this.style.borderColor='#a78824'"
+                ><b>Sign Up</b></a
+              >
+            </div>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+
+    {% for msg in get_flashed_messages() %} {% if msg[0] == "0" %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{msg[1:]}}
+
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% elif msg[0] == "1" %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {{msg[1:]}}
+
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endif %} {% endfor %}
+
+    <!-- Title -->
+    <div style="height: 20vh; position: relative;">
+      <center>
+        <h1
+          style="color: #a78824; background-color: #343a40; padding: 6px 15px 12px 15px; border: 2px solid white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+        >
+          The Activity Marathon
+        </h1>
+      </center>
+    </div>
+
+    <!-- Description -->
+    <center>
+      <div
+        style="background-color: #343a40; border: 2px solid white; padding: 10px 5px 0px 5px; width: 60%; line-height: 40px;"
+      >
+        {% if session.get("logged_in") %}
+        <p style="color: #a78824; font-size: 20px">
+          Due to Covid-19, average physical activity has reached an all-time
+          low.<br />
+          We hope that this website will help make working out more fun and
+          engaging by allowing users to compete for rewards.<br />You are logged
+          in, so you can check out the
+          <a
+            href="/leaderboard"
+            style="-webkit-transition: color 0.2s ease-out; -moz-transition: color 0.2s ease-out; -o-transition: color 0.2s ease-out; -ms-transition: color 0.2s ease-out; transition: color 0.2s ease-out; color: #a78824;"
+            onmouseover="this.style.color='#d0a92c'; this.style.textDecoration = 'none'"
+            onmouseout="this.style.color='#a78824'; this.style.textDecoration = 'none'"
+            ><b>Leaderboard</b></a
+          >,
+          <a
+            href="/upload"
+            style="-webkit-transition: color 0.2s ease-out; -moz-transition: color 0.2s ease-out; -o-transition: color 0.2s ease-out; -ms-transition: color 0.2s ease-out; transition: color 0.2s ease-out; color: #a78824;"
+            onmouseover="this.style.color='#d0a92c'; this.style.textDecoration = 'none'"
+            onmouseout="this.style.color='#a78824'; this.style.textDecoration = 'none'"
+            ><b>Upload</b></a
+          >
+          your daily video, or view the
+          <a
+            href="/shop"
+            style="-webkit-transition: color 0.2s ease-out; -moz-transition: color 0.2s ease-out; -o-transition: color 0.2s ease-out; -ms-transition: color 0.2s ease-out; transition: color 0.2s ease-out; color: #a78824;"
+            onmouseover="this.style.color='#d0a92c'; this.style.textDecoration = 'none'"
+            onmouseout="this.style.color='#a78824'; this.style.textDecoration = 'none'"
+            ><b>Shop</b></a
+          >.<br />Good Luck and Have Fun!
+        </p>
+        {% else %}
+        <p style="color: #a78824; font-size: 20px">
+          Due to Covid-19, average physical activity has reached an all-time
+          low.<br />
+          We hope that this website will help make working out more fun and
+          engaging by allowing users to compete for rewards.<br />You will need
+          to
+          <a
+            href="/login"
+            style="-webkit-transition: color 0.2s ease-out; -moz-transition: color 0.2s ease-out; -o-transition: color 0.2s ease-out; -ms-transition: color 0.2s ease-out; transition: color 0.2s ease-out; color: #a78824;"
+            onmouseover="this.style.color='#d0a92c'; this.style.textDecoration = 'none'"
+            onmouseout="this.style.color='#a78824'; this.style.textDecoration = 'none'"
+            ><b>Log In</b></a
+          >
+          or
+          <a
+            href="/register"
+            class="btn btn-warning"
+            style="background-color: #a78824; border-color: #a78824;"
+            onmouseover="this.style.backgroundColor='#d0a92c'; this.style.borderColor='#d0a92c'"
+            onmouseout="this.style.backgroundColor='#a78824'; this.style.borderColor='#a78824'"
+            ><b>Sign Up</b></a
+          >
+          to access the Leaderboard, Upload, or Shop.<br />Good Luck and Have
+          Fun!
+        </p>
+        {% endif %}
+      </div>
+      <div
+        style="background-color: #343a40; border: 2px solid white; padding: 10px 5px 0px 5px; width: 46%; line-height: 40px; float: left; margin: 5% 2% 2% 2%;"
+      >
+        <p style="color: #a78824; font-size: 20px">
+          Whether you have been subject to the Quarantine 15, just gained a
+          little extra weight, build muscle or just want to stay healthy, this
+          is the app for you!
+        </p>
+      </div>
+      <div
+        style="background-color: #343a40; border: 2px solid white; padding: 10px 5px 0px 5px; width: 46%; line-height: 40px; float: right; margin: 5% 2% 2% 2%;"
+      >
+        <p style="color: #a78824; font-size: 20px">
+          This is some wonderful text! Imagine not having this on the website!!!
+        </p>
+      </div>
+    </center>
+
+    <!-- Bootstrap Links -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
