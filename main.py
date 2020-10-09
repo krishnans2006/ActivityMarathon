@@ -1,10 +1,19 @@
 from flask import Flask, render_template, redirect, url_for, request, session, flash
+from flask_mail import Mail, Message
 from replit import db
 from datetime import timedelta
 
-
 app = Flask(__name__)
+
 app.config["SECRET_KEY"] = "fsediwq3e78fwshdore"
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'activity.marathon@gmail.com'
+app.config['MAIL_PASSWORD'] = db["account_pwd"]
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+
+mail = Mail(app)
 
 
 def set_session_timeout(remember):
@@ -44,7 +53,9 @@ def login():
                 session["email"] = email
                 session["pwd"] = pwd
                 session["pts"] = user["pts"]
-                flash(f"1Successfully Logged In as {session['fname']} {session['lname']}!")
+                flash(
+                    f"1Successfully Logged In as {session['fname']} {session['lname']}!"
+                )
                 set_session_timeout(rme)
                 return redirect(url_for("home"))
         flash("0Incorrect Username or Password!")
@@ -65,10 +76,16 @@ def register():
         for user in db["accounts"]:
             if user["email"] == email:
                 flash(
-                        "0You are already registered with this email! Please Log In or use another email."
-                    )
+                    "0You are already registered with this email! Please Log In or use another email."
+                )
                 return redirect(url_for("register"))
-        db["accounts"] = db["accounts"] + [{"fname": fname, "lname": lname, "email": email, "pwd": pwd, "pts": 0}]
+        db["accounts"] = db["accounts"] + [{
+            "fname": fname,
+            "lname": lname,
+            "email": email,
+            "pwd": pwd,
+            "pts": 0
+        }]
         flash("1Successfully Registered!")
         return redirect(url_for("login"))
     return render_template("register.html", session=session)
@@ -83,7 +100,8 @@ def logout():
 
 @app.route("/leaderboard")
 def leaderboard():
-    sorted_by_pts = sorted(db["accounts"], key=lambda l: l["pts"], reverse=True)
+    sorted_by_pts = sorted(
+        db["accounts"], key=lambda l: l["pts"], reverse=True)
     return render_template("leaderboard.html", leaderboard=sorted_by_pts)
 
 
@@ -91,9 +109,17 @@ def leaderboard():
 def upload():
     if request.method == "POST":
         file = request.files["file"]
+        msg = Message(
+            'New Video to Review!',
+            sender=app.config['MAIL_USERNAME'],
+            recipients=['activity.marathon.approve1@gmail.com'])
+        msg.body = f"Hello Admin! You have a new video to review! {session['fname']} {session['lname']} has submitted their daily video!"
+        msg.attach("video.mp4", "video/mp4", file.read())
+        mail.send(msg)
         flash("1File was sent to review successfully!")
         return redirect(url_for("leaderboard"))
     return render_template("upload.html")
+
 
 @app.route("/shop", methods=["GET", "POST"])
 def shop():
@@ -102,4 +128,3 @@ def shop():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080, debug=True)
-    
